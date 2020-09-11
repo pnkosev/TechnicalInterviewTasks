@@ -1,11 +1,20 @@
 public class Main {
     public static void main(String[] args) {
+
         Math math = new MathImpl();
 
-        int resultMult = math.mult(2, 3);
-        System.out.println(resultMult);
+        System.out.println(math.mult(2, 3));
+        System.out.println(math.mult(-2, 3));
+        System.out.println(math.mult(2, -3));
+        System.out.println(math.mult(-2, -3));
+        System.out.println(math.mult(-2, 0));
+        System.out.println(math.mult(0, 3));
 
-        int resultDiv = math.div(31, 3);
-        System.out.println(resultDiv);
+        System.out.println(math.div(31, 3));
+        System.out.println(math.div(-31, 3));
+        System.out.println(math.div(-31, -3));
+        System.out.println(math.div(0, 3));
+        System.out.println(math.div(0, -3));
+        System.out.println(math.div(31, 0));
     }
 }
