@@ -1,7 +1,10 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 public class MathImpl implements Math {
 
     @Override
-    public int mult(int a, int b) {
+    public int multiply(int a, int b) {
         if (isZero(a) || isZero(b)) {
             return 0;
         }
@@ -23,7 +26,7 @@ public class MathImpl implements Math {
     }
 
     @Override
-    public int div(int a, int b) {
+    public int divide(int a, int b) {
         if (isZero(a)) {
             return 0;
         }
@@ -44,6 +47,24 @@ public class MathImpl implements Math {
         }
 
         return isResultNegative ? -result : result;
+    }
+
+    @Override
+    public double sqrt(int a) {
+        if (a == 0 || a == 1) {
+            return a;
+        }
+
+        double result = 0;
+
+        for (double i = 1; i < a; i += 0.00001) {
+            if (i * i >= a - 0.00002) {
+                result = i;
+                break;
+            }
+        }
+
+        return new BigDecimal(result).setScale(5, RoundingMode.HALF_DOWN).doubleValue();
     }
 
     private boolean isZero(int num) {

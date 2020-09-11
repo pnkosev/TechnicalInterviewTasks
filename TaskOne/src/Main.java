@@ -3,18 +3,7 @@ public class Main {
 
         Math math = new MathImpl();
 
-        System.out.println(math.mult(2, 3));
-        System.out.println(math.mult(-2, 3));
-        System.out.println(math.mult(2, -3));
-        System.out.println(math.mult(-2, -3));
-        System.out.println(math.mult(-2, 0));
-        System.out.println(math.mult(0, 3));
-
-        System.out.println(math.div(31, 3));
-        System.out.println(math.div(-31, 3));
-        System.out.println(math.div(-31, -3));
-        System.out.println(math.div(0, 3));
-        System.out.println(math.div(0, -3));
-        System.out.println(math.div(31, 0));
+        System.out.println(math.sqrt(9));
+        System.out.println(java.lang.Math.sqrt(9));
     }
 }
