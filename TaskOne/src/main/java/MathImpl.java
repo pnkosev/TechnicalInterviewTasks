@@ -57,7 +57,9 @@ public class MathImpl implements Math {
 
         double result = 0;
 
-        for (double i = 1; i < a; i += 0.00001) {
+        double startingNumber = getMinimumInitialNumber(String.valueOf(a).length());
+
+        for (double i = startingNumber; i < a; i += 0.00001) {
             if (i * i >= a - 0.00002) {
                 result = i;
                 break;
@@ -65,6 +67,27 @@ public class MathImpl implements Math {
         }
 
         return new BigDecimal(result).setScale(5, RoundingMode.HALF_DOWN).doubleValue();
+    }
+
+    private double getMinimumInitialNumber(int length) {
+        if (length == 1 || length == 2) {
+            return 1;
+        }
+
+        double oddResult = 10;
+        double evenResult = 31.62277660168379;
+
+        if (length % 2 == 1) {
+            for (int i = (length - 3) / 2; i > 0; i--) {
+                oddResult *= 10;
+            }
+            return oddResult;
+        } else {
+            for (int i = (length - 4) / 2; i > 0; i--) {
+                evenResult *= 10;
+            }
+            return evenResult;
+        }
     }
 
     private boolean isZero(int num) {
