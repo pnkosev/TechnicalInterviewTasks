@@ -58,6 +58,7 @@ public class MathImpl implements Math {
         double result = 0;
 
         double startingNumber = getMinimumInitialNumber(String.valueOf(a).length());
+        startingNumber = increaseNumber(startingNumber, a);
 
         for (double i = startingNumber; i < a; i += 0.00001) {
             if (i * i >= a - 0.00002) {
@@ -67,6 +68,16 @@ public class MathImpl implements Math {
         }
 
         return new BigDecimal(result).setScale(5, RoundingMode.HALF_DOWN).doubleValue();
+    }
+
+    private double increaseNumber(double number, int target) {
+        number *= 1.1;
+
+        if (number * number > target) {
+            return number * 0.9;
+        }
+
+        return increaseNumber(number, target);
     }
 
     private double getMinimumInitialNumber(int length) {
