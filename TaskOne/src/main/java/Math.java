@@ -4,5 +4,5 @@ public interface Math {
 
     int divide(int a, int b);
 
-    double sqrt(int a);
+    double sqrt(long a);
 }

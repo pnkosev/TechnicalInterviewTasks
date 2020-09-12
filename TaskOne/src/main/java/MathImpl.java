@@ -50,18 +50,20 @@ public class MathImpl implements Math {
     }
 
     @Override
-    public double sqrt(int a) {
-        if (a == 0 || a == 1) {
-            return a;
+    public double sqrt(long number) {
+        if (number == 0 || number == 1) {
+            return number;
         }
+
+        String numberAsString = String.valueOf(number);
+        double startingNumber = getMinimumInitialNumber(numberAsString.length());
+        startingNumber = increaseNumberAccordingToFirstDigit(startingNumber, numberAsString.substring(0, 1));
+        startingNumber = increaseNumber(startingNumber, number);
 
         double result = 0;
 
-        double startingNumber = getMinimumInitialNumber(String.valueOf(a).length());
-        startingNumber = increaseNumber(startingNumber, a);
-
-        for (double i = startingNumber; i < a; i += 0.00001) {
-            if (i * i >= a - 0.00002) {
+        for (double i = startingNumber; i < number; i += 0.00001) {
+            if (i * i >= number - 0.00001) {
                 result = i;
                 break;
             }
@@ -70,11 +72,47 @@ public class MathImpl implements Math {
         return new BigDecimal(result).setScale(5, RoundingMode.HALF_DOWN).doubleValue();
     }
 
-    private double increaseNumber(double number, int target) {
-        number *= 1.1;
+    /*
+        1 000 000 -> 1000
+        2 000 000 -> 1414 414 41%
+        3 000 000 -> 1732 318 23%
+        4 000 000 -> 2000 268 15.5%
+        5 000 000 -> 2236 236 11.5%
+        6 000 000 -> 2449 213  9.5%
+        7 000 000 -> 2645 196  7.9%
+        8 000 000 -> 2828 183  6.6%
+        9 000 000 -> 3000 172  5.6%
+       10 000 000 -> 3162
+     */
+
+    private double increaseNumberAccordingToFirstDigit(double number, String firstDigit) {
+        switch (firstDigit) {
+            case "2":
+                return number * 1.41;
+            case "3":
+                return number * 1.73;
+            case "4":
+                return number * 2;
+            case "5":
+                return number * 2.23;
+            case "6":
+                return number * 2.44;
+            case "7":
+                return number * 2.64;
+            case "8":
+                return number * 2.82;
+            case "9":
+                return number * 3;
+            default:
+                return number;
+        }
+    }
+
+    private double increaseNumber(double number, long target) {
+        number *= 1.00001;
 
         if (number * number > target) {
-            return number * 0.9;
+            return number * 0.99999;
         }
 
         return increaseNumber(number, target);

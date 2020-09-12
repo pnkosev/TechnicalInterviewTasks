@@ -3,6 +3,6 @@ public class Main {
 
         Math math = new MathImpl();
 
-        System.out.println(math.sqrt(1234567890));
+        System.out.println(math.sqrt(620608357369L));
     }
 }
