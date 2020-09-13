@@ -1,7 +1,9 @@
+package service;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class MathImpl implements Math {
+public class MathServiceImpl implements MathService {
 
     @Override
     public int multiply(int a, int b) {

@@ -1,4 +1,6 @@
-public interface Math {
+package service;
+
+public interface MathService {
 
     int multiply(int a, int b);
 
