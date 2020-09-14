@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 @Fork(1)
 @State(Scope.Thread)
 @Warmup(iterations = 5, time = 1)
-@OutputTimeUnit(TimeUnit.NANOSECONDS)
+@OutputTimeUnit(TimeUnit.SECONDS)
 @Measurement(iterations = 10, time = 1)
 public class Sqrt {
 
@@ -28,7 +28,10 @@ public class Sqrt {
     }
 
     @Benchmark
-    public double customSqrt() {
-        return mathService.sqrt(value);
+    public double customSqrt() { return mathService.sqrt(value); }
+
+    @Benchmark
+    public double customSqrtWentTooFar() {
+        return mathService.sqrtWentTooFar(value);
     }
 }

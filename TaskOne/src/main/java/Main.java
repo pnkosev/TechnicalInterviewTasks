@@ -17,6 +17,17 @@ public class Main {
 
         MathService math = new MathServiceImpl();
 
+//        System.out.println(math.sqrt(PERFECT_SQUARE_FOUR_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(PERFECT_SQUARE_FOUR_DIGIT_NUMBER));
+//        System.out.println(math.sqrt(PERFECT_SQUARE_SIX_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(PERFECT_SQUARE_SIX_DIGIT_NUMBER));
+//        System.out.println(math.sqrt(PERFECT_SQUARE_EIGHT_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(PERFECT_SQUARE_EIGHT_DIGIT_NUMBER));
+//        System.out.println(math.sqrt(PERFECT_SQUARE_TEN_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(PERFECT_SQUARE_TEN_DIGIT_NUMBER));
+//        System.out.println(math.sqrt(PERFECT_SQUARE_TWELVE_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(PERFECT_SQUARE_TWELVE_DIGIT_NUMBER));
+
         // perfect square four-digit number
         calcAndPrintComparison(math, PERFECT_SQUARE_FOUR_DIGIT_NUMBER);
 
