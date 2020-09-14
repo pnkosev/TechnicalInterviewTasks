@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class StackImpl<T> implements Stack<T> {
@@ -11,7 +12,7 @@ public class StackImpl<T> implements Stack<T> {
     @Override
     public void push(T o) {
         if (this.size() == this.array.length) {
-            throw new IndexOutOfBoundsException();
+            throw new StackOverflowError();
         }
 
         this.array[currentIndex++] = o;
@@ -19,16 +20,22 @@ public class StackImpl<T> implements Stack<T> {
 
     @Override
     public T pull() {
-        // if we care to delete the item
-//        T[] copyArr = (T[]) new Object[this.size()];
-//        System.arraycopy(this.array, 0, copyArr, currentIndex, this.size());
-//        System.arraycopy(this.array, currentIndex + 1, copyArr, currentIndex, this.size());
+        // Copying the array without the pulled item and reassigning it to this.array
+//        T[] copyArr = (T[]) new Object[this.array.length];
+//        System.arraycopy(this.array, 0, copyArr, 0, this.currentIndex - 1);
+//        T pulledItem = this.array[--this.currentIndex];
+//        this.array = copyArr;
 
         if (this.size() < 1) {
-            throw new IndexOutOfBoundsException();
+            return null;
         }
 
-        return this.array[--currentIndex];
+        ArrayList<T> list = new ArrayList<>(Arrays.asList(this.array));
+        T pulledItem = list.remove(--this.currentIndex);
+
+        this.array = (T[]) list.toArray();
+
+        return pulledItem;
     }
 
     @Override
