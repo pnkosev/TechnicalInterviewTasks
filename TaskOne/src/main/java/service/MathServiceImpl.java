@@ -52,7 +52,29 @@ public class MathServiceImpl implements MathService {
     }
 
     @Override
-    public double sqrt(long number) {
+    public double sqrt(long a) {
+        long iterationCount = 0;
+
+        if (a == 0 || a == 1) {
+            return a;
+        }
+
+        double result = 0;
+
+        for (double i = 1; i < a; i += 0.00001) {
+            iterationCount++;
+            if (i * i >= a - 0.00002) {
+                result = i;
+                break;
+            }
+        }
+
+        System.out.print(String.format("My math made %d iterations ", iterationCount));
+        return new BigDecimal(result).setScale(5, RoundingMode.HALF_DOWN).doubleValue();
+    }
+
+    @Override
+    public double sqrtWentTooFar(long number) {
         if (number == 0 || number == 1) {
             return number;
         }
