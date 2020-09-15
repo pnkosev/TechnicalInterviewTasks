@@ -58,14 +58,14 @@ public class MathServiceImpl implements MathService {
 
         double mid = 0;
         for (int i = 0; i < 100; i++) {
-            mid = (left + right) / 2;
+            mid = left + (right - left) / 2;
 
             if (mid * mid == a) {
                 return mid;
             } else if (mid * mid < a) {
-                left = mid;
+                left = mid + 1;
             } else {
-                right = mid;
+                right = mid - 1;
             }
         }
 
