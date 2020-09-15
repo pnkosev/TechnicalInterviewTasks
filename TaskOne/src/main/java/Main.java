@@ -17,6 +17,31 @@ public class Main {
 
         MathService math = new MathServiceImpl();
 
+//        System.out.println(math.sqrtBinary(PERFECT_SQUARE_FOUR_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(PERFECT_SQUARE_FOUR_DIGIT_NUMBER));
+//        System.out.println(math.sqrtBinary(NON_PERFECT_SQUARE_FOUR_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(NON_PERFECT_SQUARE_FOUR_DIGIT_NUMBER));
+//
+//        System.out.println(math.sqrtBinary(PERFECT_SQUARE_SIX_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(PERFECT_SQUARE_SIX_DIGIT_NUMBER));
+//        System.out.println(math.sqrtBinary(NON_PERFECT_SQUARE_SIX_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(NON_PERFECT_SQUARE_SIX_DIGIT_NUMBER));
+//
+//        System.out.println(math.sqrtBinary(PERFECT_SQUARE_EIGHT_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(PERFECT_SQUARE_EIGHT_DIGIT_NUMBER));
+//        System.out.println(math.sqrtBinary(NON_PERFECT_SQUARE_EIGHT_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(NON_PERFECT_SQUARE_EIGHT_DIGIT_NUMBER));
+//
+//        System.out.println(math.sqrtBinary(PERFECT_SQUARE_TEN_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(PERFECT_SQUARE_TEN_DIGIT_NUMBER));
+//        System.out.println(math.sqrtBinary(NON_PERFECT_SQUARE_TEN_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(NON_PERFECT_SQUARE_TEN_DIGIT_NUMBER));
+//
+//        System.out.println(math.sqrtBinary(PERFECT_SQUARE_TWELVE_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(PERFECT_SQUARE_TWELVE_DIGIT_NUMBER));
+//        System.out.println(math.sqrtBinary(NON_PERFECT_SQUARE_TWELVE_DIGIT_NUMBER));
+//        System.out.println(Math.sqrt(NON_PERFECT_SQUARE_TWELVE_DIGIT_NUMBER));
+//
 //        System.out.println(math.sqrt(PERFECT_SQUARE_FOUR_DIGIT_NUMBER));
 //        System.out.println(Math.sqrt(PERFECT_SQUARE_FOUR_DIGIT_NUMBER));
 //        System.out.println(math.sqrt(PERFECT_SQUARE_SIX_DIGIT_NUMBER));
@@ -62,7 +87,7 @@ public class Main {
     private static void calcAndPrintComparison(MathService math, long number) {
         printExecutionTimeResults(
                 number,
-                getExecutionTime(() -> math.sqrt(number)),
+                getExecutionTime(() -> math.sqrtBinary(number)),
                 getExecutionTime(() -> Math.sqrt(number))
         );
     }
@@ -76,7 +101,7 @@ public class Main {
     private static void printExecutionTimeResults(long number, long custom, long buildIn) {
         System.out.println(
                 String.format(
-                        "calculating sqrt(%d) and took %d millis, while build-in math took %d millis.",
+                        "For calculating sqrt(%d) my math took %d millis, while build-in math took %d millis.",
                         number,
                         custom,
                         buildIn)

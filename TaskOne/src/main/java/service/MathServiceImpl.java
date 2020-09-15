@@ -52,6 +52,27 @@ public class MathServiceImpl implements MathService {
     }
 
     @Override
+    public double sqrtBinary(long a) {
+        double left = 0;
+        double right = a;
+
+        double mid = 0;
+        for (int i = 0; i < 100; i++) {
+            mid = (left + right) / 2;
+
+            if (mid * mid == a) {
+                return mid;
+            } else if (mid * mid < a) {
+                left = mid;
+            } else {
+                right = mid;
+            }
+        }
+
+        return mid;
+    }
+
+    @Override
     public double sqrt(long a) {
 //        long iterationCount = 0;
 

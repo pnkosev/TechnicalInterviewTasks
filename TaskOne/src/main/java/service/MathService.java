@@ -6,6 +6,8 @@ public interface MathService {
 
     int divide(int a, int b);
 
+    double sqrtBinary(long a);
+
     double sqrt(long a);
 
     double sqrtWentTooFar(long a);
