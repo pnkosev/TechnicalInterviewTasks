@@ -54,7 +54,31 @@ public class ArrayUtil {
 
             unsortedIndex++;
 
-        } while (unsortedIndex < sortedArr.length - 1);
+        } while (unsortedIndex < sortedArr.length);
+
+        return sortedArr;
+    }
+
+    public static int[] insertionSort(int[] arr) {
+        int[] sortedArr = new int[arr.length];
+        System.arraycopy(arr, 0, sortedArr, 0, arr.length);
+
+        int lastSortedIndex = 0;
+        int unsortedIndex = lastSortedIndex + 1;
+
+        do {
+            int itemToSort = sortedArr[unsortedIndex++];
+
+            for (int i = lastSortedIndex; i >= 0; i--) {
+                int sortedItem = sortedArr[i];
+                if (sortedItem > itemToSort) {
+                    sortedArr[i] = itemToSort;
+                    sortedArr[i + 1] = sortedItem;
+                }
+            }
+
+            lastSortedIndex++;
+        } while (unsortedIndex < sortedArr.length);
 
         return sortedArr;
     }

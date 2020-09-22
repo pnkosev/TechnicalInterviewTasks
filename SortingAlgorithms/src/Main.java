@@ -6,5 +6,6 @@ public class Main {
 
         System.out.println(Arrays.toString(ArrayUtil.bubbleSort(arr)));
         System.out.println(Arrays.toString(ArrayUtil.selectionSort(arr)));
+        System.out.println(Arrays.toString(ArrayUtil.insertionSort(arr)));
     }
 }
