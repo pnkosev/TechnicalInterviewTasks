@@ -26,4 +26,59 @@ public class ArrayUtil {
 
         return sortedArr;
     }
+
+    public static int[] selectionSort(int[] arr) {
+        int[] sortedArr = new int[arr.length];
+        System.arraycopy(arr, 0, sortedArr, 0, arr.length);
+
+        int unsortedIndex = 0;
+
+        do {
+
+            int currentMinimum = sortedArr[unsortedIndex];
+            int index = -1;
+
+            for (int i = unsortedIndex + 1; i < sortedArr.length; i++) {
+                int currentItemToCompare = sortedArr[i];
+                if (currentItemToCompare < currentMinimum) {
+                    currentMinimum = currentItemToCompare;
+                    index = i;
+                }
+            }
+
+            if (index != -1) {
+                int firstUnsortedItem = sortedArr[unsortedIndex];
+                sortedArr[unsortedIndex] = currentMinimum;
+                sortedArr[index] = firstUnsortedItem;
+            }
+
+            unsortedIndex++;
+
+        } while (unsortedIndex < sortedArr.length - 1);
+
+        return sortedArr;
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
