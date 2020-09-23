@@ -162,8 +162,8 @@ public class ArrayUtil {
     private static int partition(int[] arr, int leftIndex, int rightIndex) {
         int m = arr[rightIndex];
 
-        int i = -1;
-        for (int j = 0; j < rightIndex; j++) {
+        int i = leftIndex - 1;
+        for (int j = leftIndex; j < rightIndex; j++) {
             if (arr[j] < m) {
                 i++;
                 int temp = arr[i];
