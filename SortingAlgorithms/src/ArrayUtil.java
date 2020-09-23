@@ -1,6 +1,7 @@
 public class ArrayUtil {
 
-    private ArrayUtil() {}
+    private ArrayUtil() {
+    }
 
     public static int[] bubbleSort(int[] arr) {
         int[] sortedArr = new int[arr.length];
@@ -79,6 +80,61 @@ public class ArrayUtil {
 
             lastSortedIndex++;
         } while (unsortedIndex < sortedArr.length);
+
+        return sortedArr;
+    }
+
+    public static int[] mergeSort(int[] arr) {
+        int[] sortedArr = new int[arr.length];
+        System.arraycopy(arr, 0, sortedArr, 0, arr.length);
+
+        int step = 2;
+
+        do {
+            for (int i = 0; i < sortedArr.length - 1; i += step) {
+
+                int[] copyArr;
+
+                if (i + step >= sortedArr.length) {
+                    copyArr = new int[step - (i + step - sortedArr.length)];
+                } else {
+                    copyArr = new int[step];
+                }
+
+                int leftHeadIndex = 0;
+                int rightHeadIndex = copyArr.length % 2 == 0 ? copyArr.length / 2 : copyArr.length / 2 + 1;
+
+                for (int j = 0; j < copyArr.length; j++) {
+
+                    if (leftHeadIndex >= step / 2) {
+                        if (rightHeadIndex >= copyArr.length) {
+                            continue;
+                        }
+                        copyArr[j] = sortedArr[i + rightHeadIndex];
+                        rightHeadIndex++;
+                        continue;
+                    } else if (rightHeadIndex >= copyArr.length) {
+                        copyArr[j] = sortedArr[i + leftHeadIndex];
+                        leftHeadIndex++;
+                        continue;
+                    }
+
+                    if (sortedArr[i + leftHeadIndex] < sortedArr[i + rightHeadIndex]) {
+                        copyArr[j] = sortedArr[i + leftHeadIndex];
+                        leftHeadIndex++;
+                    } else {
+                        copyArr[j] = sortedArr[i + rightHeadIndex];
+                        rightHeadIndex++;
+                    }
+                }
+
+                for (int k = 0; k < copyArr.length; k++) {
+                    sortedArr[i + k] = copyArr[k];
+                }
+            }
+
+            step *= 2;
+        } while (step < sortedArr.length + 1);
 
         return sortedArr;
     }
