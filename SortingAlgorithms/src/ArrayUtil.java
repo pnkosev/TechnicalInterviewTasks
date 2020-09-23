@@ -138,6 +138,46 @@ public class ArrayUtil {
 
         return sortedArr;
     }
+
+    public static int[] quickSort(int[] arr) {
+        int[] sortedArr = new int[arr.length];
+        System.arraycopy(arr, 0, sortedArr, 0, arr.length);
+
+        quickSortAlgorithm(sortedArr, 0, sortedArr.length - 1);
+
+        return sortedArr;
+    }
+
+    private static void quickSortAlgorithm(int[] arr, int leftIndex, int rightIndex) {
+        if (leftIndex >= rightIndex) {
+            return;
+        }
+
+        int p = partition(arr, leftIndex, rightIndex);
+
+        quickSortAlgorithm(arr, leftIndex, p - 1);
+        quickSortAlgorithm(arr, p + 1, rightIndex);
+    }
+
+    private static int partition(int[] arr, int leftIndex, int rightIndex) {
+        int m = arr[rightIndex];
+
+        int i = -1;
+        for (int j = 0; j < rightIndex; j++) {
+            if (arr[j] < m) {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        int temp = arr[i + 1];
+        arr[i + 1] = m;
+        arr[rightIndex] = temp;
+
+        return i + 1;
+    }
 }
 
 
